@@ -12,7 +12,6 @@ fn main() {
         .version(env!("CARGO_PKG_VERSION"))
         .usage("base64rs [args]")
         .action(default_action)
-        .command(add_command())
         .command(encode_command())
         .command(decode_command());
 
@@ -22,20 +21,6 @@ fn main() {
 fn default_action(c: &Context) {
     println!("Hello, {:?}", c.args)
 }
-
-fn add_action(c: &Context) {
-    let sum: i32 = c.args.iter().map(|x| x.parse::<i32>().unwrap()).sum();
-    println!("{}", sum);
-}
-
-fn add_command() -> Command {
-    Command::new("add")
-        .description("add command")
-        .alias("a")
-        .usage("base64 add(a) [nums...]")
-        .action(add_action)
-}
-
 
 fn encode_action(c: &Context) {
     println!("{}", encode(&c.args[0]));
