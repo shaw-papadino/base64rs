@@ -19,7 +19,11 @@ fn main() {
 }
 
 fn default_action(c: &Context) {
-    c.help()
+    if c.args.len() == 0 {
+        c.help();
+    } else {
+        encode_action(c);
+    }
 }
 
 fn encode_action(c: &Context) {
