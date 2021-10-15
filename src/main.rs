@@ -19,7 +19,7 @@ fn main() {
 }
 
 fn default_action(c: &Context) {
-    println!("Hello, {:?}", c.args)
+    c.help()
 }
 
 fn encode_action(c: &Context) {
